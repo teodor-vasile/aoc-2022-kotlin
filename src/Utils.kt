@@ -6,7 +6,8 @@ import java.security.MessageDigest
  * Reads lines from the given input txt file.
  */
 fun readInput(name: String) = File("src/test/kotlin/resources", "$name.txt")
-    .readLines()
+    .readText() //String
+//    .readLines() //List<String>
 
 /**
  * Converts string to md5 hash.
