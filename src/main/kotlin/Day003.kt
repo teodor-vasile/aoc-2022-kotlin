@@ -1,18 +1,18 @@
 class Day003 {
-    fun part1(input: String): Int {
-        val data = parseInput(input)
-        return data.maxOf { it.sum() }
+    fun part1(input: List<String>): Int {
+        var itemPriority: Int
+        var prioritiesSum = 0
+        for (rucksack in input) {
+            val firstHalf = rucksack.subSequence(0, rucksack.length / 2)
+            val lastHalf = rucksack.subSequence(rucksack.length / 2, rucksack.length)
+            for (char in lastHalf) {
+                if (firstHalf.contains(char)) {
+                    itemPriority = if (char.isLowerCase()) char.code - 96 else char.code - 38
+                    prioritiesSum += itemPriority
+                    break
+                }
+            }
+        }
+        return prioritiesSum
     }
-
-//    fun part2(input: String): Int {
-//        val data = parseInput(input)
-//        return data
-//            .map { it.sum() }
-//            .sortedDescending()
-//            .take(3)
-//            .sum()
-//    }
-
-    private fun parseInput(input: String) = input.split("\n\n")
-        .map { elf -> elf.lines().map { it.toInt() } }
 }
