@@ -12,6 +12,12 @@ internal class Day004Test {
     }
 
     @Test
+    fun day04part1Functional() {
+        val testInput = readInputLinesSplitBy("Day04part1", ',')
+        assertEquals(500, day004.part1Functional(testInput))
+    }
+
+    @Test
     fun day04part2() {
         val testInput = readInputLinesSplitBy("Day04part1", ',')
         assertEquals(815, day004.part2(testInput))
