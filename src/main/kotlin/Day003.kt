@@ -28,5 +28,9 @@ class Day003 {
             }
         }
         return prioritiesSum
+
+        // check out zipWithNext() for this solution
+        // and intersect() method
+        // single() to return one value
     }
 }

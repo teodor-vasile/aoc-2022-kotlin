@@ -12,5 +12,5 @@ class Day002 {
         return input.sumOf { checkMap.getValue(it) }
     }
 
-    // TODO: 02/12/2022 try kotlin X benchmark to see how well it performs
+    //TODO: 02/12/2022 try kotlin X benchmark to see how well it performs (see https://www.youtube.com/watch?v=IPLfo4zXNjk)
 }

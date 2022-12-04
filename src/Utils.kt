@@ -9,7 +9,11 @@ fun readInputText(name: String) = File("src/test/kotlin/resources", "$name.txt")
     .readText() //String
 
 fun readInputLines(name: String) = File("src/test/kotlin/resources", "$name.txt")
-    .readLines() //List<String>
+    .readLines()
+
+fun readInputLinesSplitBy(name: String, delimiter: Char) = File("src/test/kotlin/resources", "$name.txt")
+    .readLines()
+    .map {it.split(delimiter)}
 
 /**
  * Converts string to md5 hash.
