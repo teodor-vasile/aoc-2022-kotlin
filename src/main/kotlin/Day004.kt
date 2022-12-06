@@ -36,10 +36,14 @@ class Day004 {
         return counter
     }
 
+    fun test() {
+    val pair = Pair("primu", "ultimu")
+        pair.first
+    }
 
     // transform to Pair<IntRange, IntRange> -> you can use first and last in an IntRange
     // substringBefore() method also useful
     // .count() -> how many of the items in the set match the predicate
     // https://todd.ginsberg.com/post/advent-of-code/2022/day4/
-    
+
 }
