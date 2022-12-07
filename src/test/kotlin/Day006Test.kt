@@ -5,10 +5,42 @@ internal class Day006Test {
 
     private val day006 = Day006()
 
+        val testInput = readInputText("Day06Part1")
     @Test
     fun day05part1() {
-        val testInput = readInputText("Day06Part1")
         assertEquals(1578, day006.findNonRepeatingSequenceIndexFunctional(testInput))
+    }
+
+    @Test
+    fun testEmptyInput() {
+        val testInput = ""
+        val expected = -1
+        val result = day006.findNonRepeatingSequenceIndexFunctional(testInput)
+        assertEquals(expected, result)
+    }
+
+    @Test
+    fun testShortInput() {
+        val testInput = "abc"
+        val expected = -1
+        val result = day006.findNonRepeatingSequenceIndexFunctional(testInput)
+        assertEquals(expected, result)
+    }
+
+    @Test
+    fun testInputWithNonRepeatingSequence() {
+        val testInput = "abcdefghijklmnopqrstuvwxyz"
+        val expected = 4
+        val result = day006.findNonRepeatingSequenceIndexFunctional(testInput)
+        assertEquals(expected, result)
+    }
+
+    @Test
+    fun testInputWithoutNonRepeatingSequence() {
+        val testInput = "aaaaaaabbbbbbbbccccccccdddddddd"
+        val expected = -1
+        val result = day006.findNonRepeatingSequenceIndexFunctional(testInput)
+        assertEquals(expected, result)
     }
 
 }
