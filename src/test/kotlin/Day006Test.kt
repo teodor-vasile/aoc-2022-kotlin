@@ -12,7 +12,7 @@ internal class Day006Test {
     }
     @Test
     fun day05part2() {
-        assertEquals(1578, day006.findNonRepeatingSequenceIndexFunctional(testInput, 14))
+        assertEquals(2178, day006.findNonRepeatingSequenceIndexFunctional(testInput, 14))
     }
 
     @Test

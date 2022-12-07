@@ -1,9 +1,10 @@
 class Day006 {
 
-
-    fun part1(lines: String): Int {
-
-        return 5
+    fun findNonRepeatingSequenceIndexFunctional(input: String, numberOfDistinctChars: Int): Int {
+        return (0 until input.length - numberOfDistinctChars - 1)
+            .map { input.substring(it, it + numberOfDistinctChars) }
+            .firstOrNull { it.toSet().size == numberOfDistinctChars }
+            ?.let { input.indexOf(it) + numberOfDistinctChars } ?: -1
     }
 
     fun findNonRepeatingSequenceIndex(input: String): Int {
@@ -16,13 +17,6 @@ class Day006 {
             }
         }
         return result
-    }
-
-    fun findNonRepeatingSequenceIndexFunctional(input: String, numberOfDistinctChars: Int): Int {
-        return (0 until input.length - numberOfDistinctChars -1)
-            .map { input.substring(it, it + numberOfDistinctChars) }
-            .firstOrNull { it.toSet().size == numberOfDistinctChars }
-            ?.let { input.indexOf(it) + numberOfDistinctChars } ?: -1
     }
 
 }
