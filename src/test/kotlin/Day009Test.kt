@@ -1,13 +1,10 @@
 import org.junit.Test
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.params.ParameterizedTest
-import org.junit.jupiter.params.provider.Arguments
-import org.junit.jupiter.params.provider.MethodSource
-import java.util.stream.Stream
 
 class Day009Test {
 
     private val day009 = Day009()
+    private val day009NotMine = Day09N(readInputLines("Day09Part1"))
 
     companion object {
         private val visitedTails = mutableSetOf<Point>()
@@ -16,6 +13,11 @@ class Day009Test {
     @Test
     fun day09part1() {
         assertEquals(13, day009.moveTheSnake(readInputLines("Day09Part1")))
+    }
+
+    @Test
+    fun day09part1NotMine() {
+        assertEquals(13, day009NotMine.solvePart2())
     }
 
     @Test
