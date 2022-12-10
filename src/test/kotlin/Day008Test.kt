@@ -5,9 +5,8 @@ internal class Day008Test {
 
     private val day008 = Day008()
 
-
     @Test
-    fun day09part1() {
-        Assertions.assertEquals(21, day008.visibleTreesCount(readInputLines("Day08_test")))
+    fun day08part1() {
+        Assertions.assertEquals(1715, day008.visibleTreesCount(readInputLines("Day08_input")))
     }
 }
