@@ -14,6 +14,11 @@ class Day009Test {
     }
 
     @Test
+    fun day09part1() {
+        assertEquals(13, day009.moveTheSnake(readInputLines("Day09Part1")))
+    }
+
+    @Test
     fun firstMove() {
         //given
         val initialHead: Point = Point(0, 0)
