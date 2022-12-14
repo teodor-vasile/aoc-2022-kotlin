@@ -22,12 +22,12 @@ class Day11 {
 
         monkeys.forEach { println(it) }
 
-        return monkeys.sortedByDescending { monkey -> monkey.operationsPerformed }
-            .subList(0,2)
-            .map { it.operationsPerformed }
-            .take(2)
-            .fold(1) { acc, value -> acc * value }
+        println()
 
+        return monkeys.sortedByDescending { monkey -> monkey.operationsPerformed }
+            .take(2)
+            .map { it.operationsPerformed }
+            .fold(1) { acc, value -> acc * value }
     }
 
     private fun doOperations(monkeys: List<Monkey>) {

@@ -9,6 +9,6 @@ internal class Day11Test {
 
     @Test
     fun day11part1() {
-        Assertions.assertEquals(10605, day011.solvePart1(readInputText("Day011_$real")))
+        Assertions.assertEquals(151312, day011.solvePart1(readInputText("Day011_$real")))
     }
 }
