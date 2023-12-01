@@ -1,5 +1,9 @@
+package tests2023
+
+import junit.framework.TestCase.assertEquals
+import main.kotlin2023.Day001
 import org.junit.Test
-import org.junit.jupiter.api.Assertions.*
+import readInputText
 
 internal class Day001Test {
 

@@ -6,14 +6,14 @@ import java.security.MessageDigest
  * Reads lines from the given input txt file.
  */
 fun readInputText(name: String) = File("src/test/kotlin/resources", "$name.txt")
-    .readText() 
+    .readText()
 
 fun readInputLines(name: String) = File("src/test/kotlin/resources", "$name.txt")
     .readLines()
 
 fun readInputLinesSplitBy(name: String, delimiter: Char) = File("src/test/kotlin/resources", "$name.txt")
     .readLines()
-    .map {it.split(delimiter)}
+    .map { it.split(delimiter) }
 
 /**
  * Converts string to md5 hash.
