@@ -11,8 +11,8 @@ internal class Day001Test {
 
     @Test
     fun day01Part1() {
-        val testInput = readInputText("Day01Part1")
-        assertEquals(66306, day001.part1(testInput))
+        val testInput = readInputText("Day01_2023_Part1")
+        assertEquals(56042, day001.part1(testInput))
     }
 
     @Test
