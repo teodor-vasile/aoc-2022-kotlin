@@ -20,7 +20,7 @@ class Day003 {
         var prioritiesSum = 0
         for (chunk in chunkedInput) {
             for (char in chunk[0]) {
-                if (chunk[1].contains(char) && chunk[2].contains(char))  {
+                if (chunk[1].contains(char) && chunk[2].contains(char)) {
                     val itemPriority = if (char.isLowerCase()) char.code - 96 else char.code - 38
                     prioritiesSum += itemPriority
                     break

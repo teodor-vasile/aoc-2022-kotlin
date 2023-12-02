@@ -3,20 +3,18 @@ class Day005 {
     data class Instruction(val count: Int, val source: Int, val target: Int)
 
     fun part1(lines: List<String>): String {
-
         val numberOfContainers = lines.first { it.trim().startsWith("1") }.trim().last().digitToInt()
 
         val containers = List(numberOfContainers) { ArrayDeque<Char>() }
         createContainers(lines, containers as MutableList<ArrayDeque<Char>>)
 
-
-
         val instructions: List<Instruction> = getInstructions(lines)
 
         instructions.forEach { instruction ->
-            repeat (instruction.count) {
-                if (containers[instruction.source - 1].isNotEmpty())
+            repeat(instruction.count) {
+                if (containers[instruction.source - 1].isNotEmpty()) {
                     containers[instruction.target - 1].addFirst(containers[instruction.source - 1].removeFirst())
+                }
             }
         }
 
@@ -24,7 +22,6 @@ class Day005 {
     }
 
     fun part2(lines: List<String>): String {
-
         val numberOfContainers = lines.first { it.trim().startsWith("1") }.trim().last().digitToInt()
         val containers = List(numberOfContainers) { ArrayDeque<Char>() }.toMutableList()
 
@@ -34,8 +31,8 @@ class Day005 {
 
         instructions.forEach { instr ->
             containers[instr.target - 1].addAll(0, containers[instr.source - 1].take(instr.count))
-                    repeat(instr.count) {containers[instr.source - 1].removeFirst()}
-            }
+            repeat(instr.count) { containers[instr.source - 1].removeFirst() }
+        }
 
         return containers.map { it.first() }.joinToString("")
     }
@@ -54,7 +51,7 @@ class Day005 {
 
     private fun createContainers(
         lines: List<String>,
-        containers: MutableList<ArrayDeque<Char>>
+        containers: MutableList<ArrayDeque<Char>>,
     ) {
         lines
             .takeWhile { !it.trim().startsWith("1") }
@@ -65,6 +62,4 @@ class Day005 {
                     }
             }
     }
-
 }
-

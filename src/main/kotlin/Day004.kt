@@ -15,14 +15,17 @@ class Day004 {
         elfPairs.forEach { elfPair ->
             val firstElf = elfPair[0].split('-').map { it.toInt() }
             val secondElf = elfPair[1].split('-').map { it.toInt() }
-            countContainingRanges(firstElf, secondElf) }
+            countContainingRanges(firstElf, secondElf)
+        }
         return counter
     }
 
     private fun countContainingRanges(firstElf: List<Int>, secondElf: List<Int>) {
         if ((firstElf[0] >= secondElf[0] && firstElf[1] <= secondElf[1]) ||
-            (secondElf[0] >= firstElf[0] && secondElf[1] <= firstElf[1]))
+            (secondElf[0] >= firstElf[0] && secondElf[1] <= firstElf[1])
+        ) {
             counter++
+        }
     }
 
     fun part2(elfPairs: List<List<String>>): Int {
@@ -30,14 +33,16 @@ class Day004 {
             val firstElf = elfPair[0].split('-').map { it.toInt() }
             val secondElf = elfPair[1].split('-').map { it.toInt() }
             if ((firstElf[1] >= secondElf[0] && firstElf[1] <= secondElf[1]) ||
-                (secondElf[1] >= firstElf[0] && secondElf[1] <= firstElf[1]))
+                (secondElf[1] >= firstElf[0] && secondElf[1] <= firstElf[1])
+            ) {
                 counter++
+            }
         }
         return counter
     }
 
     fun test() {
-    val pair = Pair("primu", "ultimu")
+        val pair = Pair("primu", "ultimu")
         pair.first
     }
 
@@ -45,5 +50,4 @@ class Day004 {
     // substringBefore() method also useful
     // .count() -> how many of the items in the set match the predicate
     // https://todd.ginsberg.com/post/advent-of-code/2022/day4/
-
 }

@@ -16,6 +16,4 @@ internal class Day005Test {
         val testInput = readInputLines("Day05part1")
         assertEquals("QNDWLMGNS", day005.part2(testInput))
     }
-
-
 }
