@@ -12,12 +12,12 @@ internal class Day002Test {
     @Test
     fun day02part1() {
         val testInput = readInputLines("Day02_2023_Part1")
-        assertEquals(100, day002.part1(testInput))
+        assertEquals(2486, day002.part1(testInput))
     }
 
-//    @Test
-//    fun day05part2() {
-//        val testInput = readInputLines("Day05part1")
-//        assertEquals("QNDWLMGNS", day002.part2(testInput))
-//    }
+    @Test
+    fun day02part2() {
+        val testInput = readInputLines("Day02_2023_Part1")
+        assertEquals(2486, day002.part2(testInput))
+    }
 }
