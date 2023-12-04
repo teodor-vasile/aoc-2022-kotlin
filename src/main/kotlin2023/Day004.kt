@@ -1,8 +1,8 @@
 package main.kotlin2023
 
-class Day004 {
+import kotlin.math.pow
 
-    data class Instruction(val count: Int, val source: Int, val target: Int)
+class Day004 {
 
     fun part1(lines: List<String>): Int {
         val objects = lines.map { line ->
@@ -17,50 +17,28 @@ class Day004 {
 
         val sumOf = objects.map { it[0].intersect(it[1]).size }
             .filter { !it.equals(0) }
-            .sumOf { Math.pow(2.0, (it - 1).toDouble()) }.toInt()
+            .sumOf { 2.0.pow(it - 1) }.toInt()
 
         return sumOf
     }
-
-    fun part2(lines: List<String>): String {
-        val numberOfContainers = lines.first { it.trim().startsWith("1") }.trim().last().digitToInt()
-        val containers = List(numberOfContainers) { ArrayDeque<Char>() }.toMutableList()
-
-        createContainers(lines, containers)
-
-        val instructions: List<Instruction> = getInstructions(lines)
-
-        instructions.forEach { instr ->
-            containers[instr.target - 1].addAll(0, containers[instr.source - 1].take(instr.count))
-            repeat(instr.count) { containers[instr.source - 1].removeFirst() }
+    fun part2(lines: List<String>): Int {
+        data class Card(val winningNumbers: List<Int>, val ourNumbers: List<Int>)
+        return lines.map { line ->
+            val (_, winningNumbersText, ourNumbersText) = line.split(":", " | ")
+            val winningNumbers = winningNumbersText.chunked(3).map { it.trim().toInt() }
+            val ourNumbers = ourNumbersText.chunked(3).map { it.trim().toInt() }
+            val count = winningNumbers.count { it in ourNumbers }
+            Card(winningNumbers, ourNumbers)to count
+        }.let { pairs ->
+            val countByCard = MutableList(pairs.size) { 1 }
+            pairs.mapIndexed { index, (_, count) ->
+                (1..count).forEach {
+                    countByCard[index + it] += countByCard[index]
+                }
+            }
+            countByCard
         }
-
-        return containers.map { it.first() }.joinToString("")
-    }
-
-    private fun getInstructions(lines: List<String>): List<Instruction> {
-        val regex = """move (\d+) from (\d+) to (\d+)""".toRegex()
-        val instructions: List<Instruction> = lines
-            .dropWhile { !it.trim().startsWith("move") }
-            .map {
-                val matchResult = regex.find(it)
-                val (count, source, target) = matchResult!!.destructured
-                Instruction(count.toInt(), source.toInt(), target.toInt())
-            }
-        return instructions
-    }
-
-    private fun createContainers(
-        lines: List<String>,
-        containers: MutableList<ArrayDeque<Char>>,
-    ) {
-        lines
-            .takeWhile { !it.trim().startsWith("1") }
-            .map { line ->
-                line.slice(1..line.length step 4)
-                    .mapIndexed { containerNumber, value ->
-                        if (value.isLetter()) containers[containerNumber].addLast(value)
-                    }
-            }
+            .onEach(::println)
+            .sum()
     }
 }
