@@ -19,6 +19,32 @@ class Day005 {
         }
         return locationValues.min()
     }
+    fun part2(lines: String): Long {
+        val parsedInput = parseInput(lines)
+        val seedsRaw = parsedInput.get(0).get(0)
+//        val seeds = mutableSetOf<Long>()
+//        for (i in 0..seedsRaw.size - 2 step 2) {
+//            seeds.addAll(seedsRaw[i]..seedsRaw[i] + seedsRaw[i + 1])
+//        }
+        val seeds = sequence {
+            for (i in 0..seedsRaw.size-2 step 2) {
+                yieldAll(seedsRaw[i] .. seedsRaw[i]+seedsRaw[i+1])
+            }
+        }
+        val seedMaps = parsedInput.drop(1)
+        val locationValues = mutableSetOf<Long>()
+        for (seed in seeds) {
+            val foundCorrespondent = findCorrespondent(seed, seedMaps[0])
+            val foundCorrespondent2 = findCorrespondent(foundCorrespondent, seedMaps[1])
+            val foundCorrespondent3 = findCorrespondent(foundCorrespondent2, seedMaps[2])
+            val foundCorrespondent4 = findCorrespondent(foundCorrespondent3, seedMaps[3])
+            val foundCorrespondent5 = findCorrespondent(foundCorrespondent4, seedMaps[4])
+            val foundCorrespondent6 = findCorrespondent(foundCorrespondent5, seedMaps[5])
+            val foundCorrespondentFinal = findCorrespondent(foundCorrespondent6, seedMaps[6])
+            locationValues.add(foundCorrespondentFinal)
+        }
+        return locationValues.min()
+    }
 
     private fun findCorrespondent(source: Long, targets: List<List<Long>>): Long {
         for (target in targets) {
